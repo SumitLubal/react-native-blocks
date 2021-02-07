@@ -1,8 +1,7 @@
-// just copy this code from the driving repo :)
 import React, {ReactNode} from 'react';
 import {Text, StyleSheet, Platform} from 'react-native';
 import ThemeContext from '../context/ThemeContext';
-import {theme} from '../constants';
+import {theme as GlobalTheme} from '../constants';
 
 const weightNames = [
   'normal',
@@ -135,12 +134,12 @@ const Typography = (props: Props) => {
   return (
     <ThemeContext.Consumer>
       {({theme}) => {
-        let style = textStyles;
+        let styleEx = textStyles;
         if (!color) {
-          style = [...textStyles, {color: theme.textColor}];
+          styleEx = [...textStyles, {color: theme.textColor}];
         }
         return (
-          <Text style={style} {...propsExtra}>
+          <Text style={styleEx} {...propsExtra}>
             {children}
           </Text>
         );
@@ -152,8 +151,8 @@ const Typography = (props: Props) => {
 const styles = StyleSheet.create({
   // default style
   text: {
-    fontSize: theme.sizes.font,
-    color: theme.colors.black,
+    fontSize: GlobalTheme.sizes.font,
+    color: GlobalTheme.colors.black,
     fontFamily: Platform.OS === 'ios' ? 'Helvetica' : 'Roboto',
   },
   // variations
@@ -176,21 +175,21 @@ const styles = StyleSheet.create({
   center: {textAlign: 'center'},
   right: {textAlign: 'right'},
   // colors
-  accent: {color: theme.colors.accent},
-  primary: {color: theme.colors.primary},
-  secondary: {color: theme.colors.secondary},
-  tertiary: {color: theme.colors.tertiary},
-  black: {color: theme.colors.black},
-  white: {color: theme.colors.white},
-  gray: {color: theme.colors.gray},
-  gray2: {color: theme.colors.gray2},
+  accent: {color: GlobalTheme.colors.accent},
+  primary: {color: GlobalTheme.colors.primary},
+  secondary: {color: GlobalTheme.colors.secondary},
+  tertiary: {color: GlobalTheme.colors.tertiary},
+  black: {color: GlobalTheme.colors.black},
+  white: {color: GlobalTheme.colors.white},
+  gray: {color: GlobalTheme.colors.gray},
+  gray2: {color: GlobalTheme.colors.gray2},
   // fonts
-  h1: theme.fonts.h1,
-  h2: theme.fonts.h2,
-  h3: theme.fonts.h3,
-  title: theme.fonts.title,
-  body: theme.fonts.body,
-  caption: theme.fonts.caption,
+  h1: GlobalTheme.fonts.h1,
+  h2: GlobalTheme.fonts.h2,
+  h3: GlobalTheme.fonts.h3,
+  title: GlobalTheme.fonts.title,
+  body: GlobalTheme.fonts.body,
+  caption: GlobalTheme.fonts.caption,
 });
 
 export default Typography;

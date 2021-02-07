@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
 import Block from './Block';
 import ThemeContext from '../context/ThemeContext';
-import {theme} from '../constants';
+import {theme as GlobalTheme} from '../constants';
 
 interface Props {
   color?: string;
@@ -14,7 +14,7 @@ interface Props {
 
 const Card = (props: Props) => {
   const {color, style, children, ...propsExtra} = props;
-  let cardStyle = {...style, ...styles.card};
+  const cardStyle = {...style, ...styles.card};
   return (
     <ThemeContext.Consumer>
       {({theme}) => {
@@ -33,9 +33,9 @@ const Card = (props: Props) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: theme.sizes.radius,
-    padding: theme.sizes.base + 4,
-    marginBottom: theme.sizes.base,
+    borderRadius: GlobalTheme.sizes.radius,
+    padding: GlobalTheme.sizes.base + 4,
+    marginBottom: GlobalTheme.sizes.base,
   },
 });
 

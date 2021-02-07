@@ -16,7 +16,7 @@ interface Props {
   shadow?: boolean;
   color?: string;
   space?: string;
-  padding?: Array<number> | number;
+  padding?: number[] | number;
   margin?: number[] | number;
   animated?: boolean;
   wrap?: boolean;
